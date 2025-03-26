@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gV5eST6uMSc=",
+  "dgSpecHash": "wZbEbmsT4rU=",
   "success": true,
-  "projectFilePath": "E:\\Submit 2\\HackerNewsApi\\HackerNewsApi\\HackerNewsApi.csproj",
+  "projectFilePath": "E:\\Submit 2\\HackerNewsAPI\\HackerNewsApi\\HackerNewsApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\linkp\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\linkp\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.14\\microsoft.aspnetcore.jsonpatch.8.0.14.nupkg.sha512",
