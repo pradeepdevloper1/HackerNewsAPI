@@ -11,13 +11,36 @@ namespace HackerNewsApi.Classes
     {
         private readonly Mock<IHackerNewsService> _mockService;
         private readonly StoriesController _controller;
+        private readonly Mock<ILogger<StoriesController>> _mockLogger;
+
 
         public StoriesControllerTests()
         {
             _mockService = new Mock<IHackerNewsService>();
-            _controller = new StoriesController(_mockService.Object);
+            _controller = new StoriesController(_mockService.Object,_mockLogger.Object);
         }
 
+        [Fact]
+        public async Task GetTopStories_ReturnsOkResult()
+        {
+            // Arrange
+            var testStories = new List<Story>
+            {
+                new Story { Id = 1, Title = "Test Story 1", Url = "http://test1.com" },
+                new Story { Id = 2, Title = "Test Story 2", Url = "http://test2.com" }
+            };
+
+            _mockService.Setup(x => x.GetTopStoriesAsync(It.IsAny<int>()))
+                      .ReturnsAsync(testStories);
+
+            // Act
+            var result = await _controller.GetTopStories();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var returnedStories = Assert.IsType<List<Story>>(okResult.Value);
+            Assert.Equal(2, returnedStories.Count);
+        }
         [Fact]
         public async Task GetNewStories_ReturnsOkResult()
         {
@@ -63,5 +86,7 @@ namespace HackerNewsApi.Classes
             var returnedStories = Assert.IsType<List<Story>>(okResult.Value);
             Assert.Equal(2, returnedStories.Count);
         }
+
+
     }
 }

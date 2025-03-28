@@ -2657,11 +2657,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\submit\\HackerNewsApi\\HackerNewsApi\\HackerNewsApi.csproj",
+      "projectUniqueName": "E:\\Submit 2\\HackerNewsAPI\\HackerNewsApi\\HackerNewsApi.csproj",
       "projectName": "HackerNewsApi",
-      "projectPath": "E:\\submit\\HackerNewsApi\\HackerNewsApi\\HackerNewsApi.csproj",
+      "projectPath": "E:\\Submit 2\\HackerNewsAPI\\HackerNewsApi\\HackerNewsApi.csproj",
       "packagesPath": "C:\\Users\\linkp\\.nuget\\packages\\",
-      "outputPath": "E:\\submit\\HackerNewsApi\\HackerNewsApi\\obj\\",
+      "outputPath": "E:\\Submit 2\\HackerNewsAPI\\HackerNewsApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\Software\\Microsoft Visual Studio\\Shared\\NuGetPackages"

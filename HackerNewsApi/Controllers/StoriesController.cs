@@ -10,10 +10,12 @@ namespace HackerNewsApi.Controllers
     public class StoriesController : ControllerBase
     {
         private readonly IHackerNewsService _hackerNewsService;
+        private readonly ILogger<StoriesController> _logger;
 
-        public StoriesController(IHackerNewsService hackerNewsService)
+        public StoriesController(IHackerNewsService hackerNewsService, ILogger<StoriesController> logger)
         {
             _hackerNewsService = hackerNewsService;
+            _logger = logger;
         }
 
         [HttpGet("new")]
@@ -52,6 +54,28 @@ namespace HackerNewsApi.Controllers
 
             var paginatedStories = stories.Skip((page - 1) * pageSize).Take(pageSize);
             return Ok(paginatedStories);
+        }
+
+
+        [HttpGet("top")]
+        [ResponseCache(Duration = 300)] // Client-side caching
+        public async Task<IActionResult> GetTopStories([FromQuery] int count = 10)
+        {
+            try
+            {
+                if (count <= 0 || count > 100)
+                {
+                    return BadRequest("Count must be between 1 and 100");
+                }
+
+                var stories = await _hackerNewsService.GetTopStoriesAsync(count);
+                return Ok(stories);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting top stories");
+                return StatusCode(500, "Internal server error");
+            }
         }
     }
 }
